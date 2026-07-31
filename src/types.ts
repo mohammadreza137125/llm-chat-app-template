@@ -1,23 +1,20 @@
-/**
- * Type definitions for the LLM chat application.
- */
-
+/** Type definitions for the Z.SHOP skin consultant Worker. */
 export interface Env {
-	/**
-	 * Binding for the Workers AI API.
-	 */
 	AI: Ai;
-
-	/**
-	 * Binding for static assets.
-	 */
 	ASSETS: { fetch: (request: Request) => Promise<Response> };
 }
 
-/**
- * Represents a chat message.
- */
 export interface ChatMessage {
-	role: "system" | "user" | "assistant";
+	role: "user" | "assistant";
 	content: string;
+}
+
+export interface ProductCard {
+	id: number;
+	name: string;
+	permalink: string;
+	price: string;
+	image: string;
+	summary: string;
+	categories: string[];
 }

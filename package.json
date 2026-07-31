@@ -1,19 +1,11 @@
 {
 	"name": "llm-chat-app-template",
-	"description": "A simple chat application powered by Cloudflare Workers AI",
+	"description": "Z.SHOP floating skin consultant powered by Cloudflare Workers AI",
 	"cloudflare": {
-		"label": "LLM Chat App",
-		"products": [
-			"Workers",
-			"Workers AI",
-			"AI Gateway"
-		],
-		"categories": [
-			"ai"
-		],
+		"label": "Z.SHOP Skin Consultant",
+		"products": ["Workers", "Workers AI"],
+		"categories": ["ai"],
 		"docs_url": "https://developers.cloudflare.com/workers-ai/",
-		"preview_icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/a974bd55-20c6-4656-fa29-1551d43ddc00/public",
-		"preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/65dd8441-89d3-491d-c5a1-0a000d070700/preview",
 		"publish": true
 	},
 	"devDependencies": {

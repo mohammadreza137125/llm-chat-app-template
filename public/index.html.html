@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>مشاور پوست زینب شاپ</title>
+    <style>
+        :root {
+            --bg-color: #f9f9f9;
+            --user-msg-bg: #fdf3e7;
+            --bot-msg-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #eaeaea;
+            --brand-color: #034f3f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Tahoma, Vazirmatn, Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            direction: rtl;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100dvh;
+            min-height: 100vh;
+            background: #fff;
+        }
+
+        .chat-header {
+            flex: 0 0 auto;
+            padding: 16px 20px;
+            text-align: center;
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .chat-header h1 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--brand-color);
+        }
+
+        .chat-header p {
+            margin: 5px 0 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .chat-history {
+            flex: 1 1 auto;
+            min-height: 0;
+            padding: 20px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            background: #fdfdfd;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            display: flex;
+            width: 100%;
+        }
+
+        .message .bubble {
+            max-width: 85%;
+            padding: 12px 16px;
+            font-size: 15px;
+            line-height: 1.9;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            color: #222;
+        }
+
+        .message.user {
+            justify-content: flex-start;
+        }
+
+        .message.user .bubble {
+            background: var(--user-msg-bg);
+            border: 1px solid #f1dfcb;
+            border-radius: 12px 12px 0 12px;
+            color: #222;
+        }
+
+        .message.assistant {
+            justify-content: flex-end;
+        }
+
+        .message.assistant .bubble {
+            background: var(--bot-msg-bg);
+            border: 1px solid #ededed;
+            border-radius: 12px 12px 12px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            color: #2b2b2b;
+        }
+
+        .product {
+            align-self: flex-end;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: min(85%, 440px);
+            padding: 10px;
+            color: #222;
+            text-decoration: none;
+            background: #fff;
+            border: 1px solid #ededed;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .product img {
+            width: 56px;
+            height: 56px;
+            flex: 0 0 56px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product span {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .product small {
+            color: #666;
+        }
+
+        .input-area {
+            flex: 0 0 auto;
+            display: flex;
+            gap: 10px;
+            padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .input-area input {
+            flex: 1;
+            min-width: 0;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid #d7d7d7;
+            border-radius: 10px;
+            outline: none;
+            font: inherit;
+            font-size: 15px;
+            color: #222;
+            background: #fff;
+            direction: rtl;
+        }
+
+        .input-area input::placeholder {
+            color: #999;
+        }
+
+        .input-area input:focus {
+            border-color: var(--brand-color);
+        }
+
+        .input-area button {
+            flex: 0 0 auto;
+            min-width: 82px;
+            height: 48px;
+            padding: 0 18px;
+            border: 0;
+            border-radius: 10px;
+            font: inherit;
+            font-weight: 700;
+            color: #fff;
+            background: var(--brand-color);
+            cursor: pointer;
+        }
+
+        .input-area button:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        .cloudflare-branding,
+        #cloudflare-branding {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>مشاور پوست هوشمند</h1>
+            <p>پاسخگویی سریع و راهنمای انتخاب محصول</p>
+        </header>
+
+        <main class="chat-history" id="chat-messages" aria-live="polite"></main>
+
+        <form class="input-area" id="chat-form">
+            <input
+                type="text"
+                id="user-input"
+                placeholder="پیام خود را بنویسید..."
+                required
+                autocomplete="off"
+            >
+            <button type="submit" id="send-button">ارسال</button>
+        </form>
+    </div>
+
+    <script src="./chat.js"></script>
+</body>
+</html>

@@ -1,7 +1,4 @@
-/**
- * For more details on how to configure Wrangler, refer to:
- * https://developers.cloudflare.com/workers/wrangler/configuration/
- */
+/** Cloudflare Worker configuration for the Z.SHOP skin consultant. */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "llm-chat-app-template",
@@ -12,11 +9,7 @@
 		"binding": "ASSETS",
 		"directory": "./public"
 	},
-	"observability": {
-		"enabled": true
-	},
-	"ai": {
-		"binding": "AI"
-	},
+	"observability": { "enabled": true },
+	"ai": { "binding": "AI" },
 	"upload_source_maps": true
 }
